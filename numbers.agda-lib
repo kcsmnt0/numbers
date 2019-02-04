@@ -1,0 +1,6 @@
+name: numbers
+include: src
+depend:
+  cubical
+  quotient
+  standard-library
