@@ -53,7 +53,7 @@ module _ {ℓ} {A : Set ℓ} {a b : A} where
   ⟪_⟫ : a ≡ b → a ♥.≡ b
   ⟪_⟫ = J (λ x _ → _ ♥.≡ x) ♥
 
-infixl 0 _≫_
+infixl 5 _≫_
 _≫_ : ∀ {ℓ} {A : Set ℓ} {a b c : A} → a ≡ b → b ≡ c → a ≡ c
 _≫_ = compPath
 

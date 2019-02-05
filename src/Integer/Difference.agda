@@ -25,17 +25,17 @@ _≈_ : ⟦ℤ⟧ → ⟦ℤ⟧ → Set
 ℤ² = ⟦ℤ²⟧ / Pointwise _≈_ _≈_
 
 instance
+  ⟦ℤ⟧-Number : Number ⟦ℤ⟧
+  ⟦ℤ⟧-Number = record { Constraint = λ _ → ⊤ ; fromNat = λ x → x – 0 }
+
   ℤ-Number : Number ℤ
-  ℤ-Number = record
-    { Constraint = λ _ → ⊤
-    ; fromNat = λ x → ⟦ x – 0 ⟧
-    }
+  ℤ-Number = record { Constraint = λ _ → ⊤ ; fromNat = λ x → ⟦ fromNat x ⟧ }
+
+  ⟦ℤ⟧-Negative : Negative ⟦ℤ⟧
+  ⟦ℤ⟧-Negative = record { Constraint = λ _ → ⊤ ; fromNeg = λ x → 0 – x }
 
   ℤ-Negative : Negative ℤ
-  ℤ-Negative = record
-    { Constraint = λ _ → ⊤
-    ; fromNeg = λ x → ⟦ 0 – x ⟧
-    }
+  ℤ-Negative = record { Constraint = λ _ → ⊤ ; fromNeg = λ x → ⟦ fromNeg x ⟧ }
 
 suc–suc-injective : ∀ a b → Path ℤ ⟦ suc a – suc b ⟧ ⟦ a – b ⟧
 suc–suc-injective a b = equiv (suc a – suc b) (a – b) (sym (+-suc a b ))
